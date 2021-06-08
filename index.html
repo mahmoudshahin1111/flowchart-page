@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> -->
+    <title>Flowchart page</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            border: 3px solid #0508c5;
+            width: fit-content;
+            font-family: 'Roboto', sans-serif;
+            box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .p-page {
+            display: grid;
+            grid-template-rows: auto 132px auto;
+            border: 3px solid yellow;
+            gap: 10px;
+            width: fit-content;
+            padding: 50px 80px;
+            
+        }
+
+        .p-header {
+        
+        }
+
+        .p-steps {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, 280px);
+
+        }
+
+        .p-phase {
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            width: 500px;
+            height: 100%;
+            clip-path: polygon(0% 0%, 52% 0%, 72% 50%, 52% 100%, 0% 100%);
+            background-color: white;
+        }
+
+        .p-phase .box {
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+            height: 100%;
+            background-color: tan;
+            padding-left: 110px;
+        }
+
+        .p-phase .triangle {
+            width: 0;
+            height: 0;
+            border-top: 66px solid transparent;
+            border-left: 100px solid transparent;
+            border-bottom: 66px solid transparent;
+
+        }
+
+        .p-phase .p-info {
+            display: inline-block;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0.5rem;
+        }
+
+        .p-phase .p-title {
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+
+        .p-phase .p-subtext {
+
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .p-phase.p-phase-1 {
+            z-index: 10;
+            left: 0;
+            transform: translateX(0);
+
+        }
+
+        .p-phase.p-phase-1 .box {
+            padding-left: 0;
+            background-color: #5fb7a1;
+        }
+
+        .p-phase.p-phase-1 .triangle {
+            border-color: transparent #5fb7a1;
+        }
+
+        .p-phase.p-phase-2 {
+            z-index: 9;
+            left: 0;
+            transform: translateX(250px);
+        }
+
+        .p-phase.p-phase-2 .box {
+            background-color: #3081ac;
+        }
+
+        .p-phase.p-phase-2 .triangle {
+            border-color: transparent #3081ac;
+        }
+
+        .p-phase.p-phase-3 {
+            z-index: 8;
+            left: 0;
+            transform: translateX(500px);
+        }
+
+        .p-phase.p-phase-3 .box {
+            background-color: #e45a35;
+        }
+
+        .p-phase.p-phase-3 .triangle {
+            border-color: transparent #e45a35;
+        }
+
+        .p-phase.p-phase-4 {
+            z-index: 7;
+            left: 0;
+            transform: translateX(750px);
+        }
+
+        .p-phase.p-phase-4 .box {
+            background-color: #ecb348;
+        }
+
+        .p-phase.p-phase-4 .triangle {
+            border-color: transparent #ecb348;
+        }
+
+
+        .p-details {
+            display: grid;
+            grid-template-columns: repeat(4, 240px) 100px;
+
+            gap: 10px;
+        }
+
+        .p-col {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+     
+            gap: 10px;
+        }
+
+        .p-col .p-box {
+  
+            padding: 0 0.25rem;
+            color: rgb(97, 97, 97);
+        }
+
+        .p-col.p-col-1 .p-box {
+            background-color: #def1ed;
+        }
+
+        .p-col.p-col-2 .p-box {
+            background-color: #d3e7f2;
+        }
+
+        .p-col.p-col-3 .p-box {
+            background-color: #f9ded7;
+        }
+
+        .p-col.p-col-4 .p-box {
+            background-color: #fbf0da;
+        }
+
+        .p-activities {
+
+            display: flex;
+ position: relative;
+
+        }
+
+        .p-activities .p-text {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            transform: rotateZ(-90deg);
+            transform-origin: center;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            position: absolute;
+            top: 50%;
+            left: -45px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="p-page">
+        <div class="p-header">
+            <h1>Process Flow Diagram Template for PowerPoint</h1>
+        </div>
+        <div class="p-steps">
+            <div class="p-phase p-phase-1">
+                <div class="box">
+                    <span class="p-info">
+                        <h2 class="p-title">Phase 1</h2>
+                        <p class="p-subtext">This is a simple text</p>
+                    </span>
+                </div>
+                <div class="triangle"></div>
+            </div>
+            <div class="p-phase p-phase-2">
+                <div class="box">
+                    <span class="p-info">
+                        <h2 class="p-title">Phase 1</h2>
+                        <p class="p-subtext">This is a simple text</p>
+                    </span>
+                </div>
+                <div class="triangle"></div>
+            </div>
+            <div class="p-phase p-phase-3">
+                <div class="box">
+                    <span class="p-info">
+                        <h2 class="p-title">Phase 1</h2>
+                        <p class="p-subtext">This is a simple text</p>
+                    </span>
+                </div>
+                <div class="triangle"></div>
+            </div>
+            <div class="p-phase p-phase-4">
+                <div class="box">
+                    <span class="p-info">
+                        <h2 class="p-title">Phase 1</h2>
+                        <p class="p-subtext">This is a simple text</p>
+                    </span>
+                </div>
+                <div class="triangle"></div>
+            </div>
+        </div>
+        <div class="p-details">
+            <div class="p-col p-col-1">
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+            </div>
+            <div class="p-col p-col-2">
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+            </div>
+            <div class="p-col p-col-3">
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+            </div>
+            <div class="p-col p-col-4">
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+                <div class="p-box">
+                    <p>This is a sample text insert your desired text here</p>
+                </div>
+            </div>
+            <div class="p-activities">
+                <p class="p-text">activities</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script> -->
+</body>
+
+</html>
